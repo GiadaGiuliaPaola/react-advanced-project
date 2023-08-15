@@ -32,7 +32,7 @@ export const EventsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const filteredEvents = selectedCategory
-    ? events.filter((event) =>event.category && event.category.name === selectedCategory)
+    ? events.filter((event) => event.categoryIds.includes(Number(selectedCategory)))
     : events;
  
 const handleCategoryChange = (e) => {
@@ -55,7 +55,7 @@ const handleCategoryChange = (e) => {
         >
          <option value="">All Categories</option>
         {categories.map((category) => (
-          <option key={category.id} value={category.name}>
+          <option key={category.id} value={category.id}>
             {category.name}
           </option>
         ))}

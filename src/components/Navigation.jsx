@@ -43,7 +43,7 @@ export const Navigation = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-
+{searchQuery && (
         <UnorderedList
           color="gray.500"
           style={{ listStyleType: "none", padding: 0 }}
@@ -54,6 +54,7 @@ export const Navigation = () => {
             </ListItem>
           ))}
         </UnorderedList>
+)}
       </Box>
     </>
   );
