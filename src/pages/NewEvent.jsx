@@ -14,6 +14,7 @@ import {
 
 
 export const action = async ({ data }) => {
+  data.categoryIds = JSON.parse(data.categoryIds);
   const newId = await fetch("http://localhost:3000/events", {
     method: "POST",
     body: JSON.stringify(data),
@@ -44,7 +45,8 @@ export const EventList = ({ events, onDelete }) => {
 export const NewEvent = () => {
   const toast = useToast();
   const [events, setEvents] = useState([]);
-  const loaderData = useLoaderData();
+  const loaderData
+   = useLoaderData();
   const [selectedCategories, setSelectedCategories] = useState([]);
  
   useEffect(() => {
@@ -97,7 +99,7 @@ export const NewEvent = () => {
     const image = formData.get("image");
     const startTime = formData.get("startTime");
     const endTime = formData.get("endTime");
-    const categoryIds = formData.get("categoryIds")
+    const categoryIds = JSON.stringify(selectedCategories);
     const createBy = formData.get("createBy")
     data.image = image;
     data.startTime = startTime;
